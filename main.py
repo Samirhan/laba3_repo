@@ -82,7 +82,6 @@ class Canvas(QWidget):
     def __init__(self, storage):
         super().__init__()
         self._storage = storage
-        self.setFocusPolicy(Qt.StrongFocus)
         self.setMinimumSize(500, 350)
         self._base_w = 0
         self._base_h = 0
@@ -166,9 +165,9 @@ class MainWindow(QMainWindow):
         self._canvas = Canvas(self._storage)
         self.setCentralWidget(self._canvas)
 
-        self._add_shortcuts()
+        self._add_hotDel()
 
-    def _add_shortcuts(self):
+    def _add_hotDel(self):
         act_delete = QAction(self)
         act_delete.setShortcut(QKeySequence.Delete)
         act_delete.triggered.connect(self._delete_selected)
